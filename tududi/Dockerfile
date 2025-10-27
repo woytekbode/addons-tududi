@@ -29,6 +29,9 @@ ENV PYTHON=python3
 ENV NODE_ENV=development
 RUN npm ci
 
+# Ensure nanoid CJS version is installed because newer nanoid is ESM-only
+RUN npm install nanoid@3 --no-save
+
 # Build the frontend
 RUN npm run build
 
