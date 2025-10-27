@@ -54,10 +54,10 @@ bashio::log.info "Port: ${PORT}"
 bashio::log.info "Database: ${DB_FILE}"
 bashio::log.info "Uploads: ${TUDUDI_UPLOAD_PATH}"
 
-# Change to app directory
-cd /app
+# Change to app directory and backend
+cd /app/backend
 
 # Start Tududi in production mode
 bashio::log.info "Starting Tududi server..."
 export NODE_ENV=production
-exec npm start
+exec node app.js
