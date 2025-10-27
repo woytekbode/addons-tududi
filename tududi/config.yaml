@@ -13,7 +13,6 @@ ports_description:
   3002/tcp: Web interface
 ingress: true
 ingress_port: 3002
-ingress_stream: false
 panel_icon: mdi:format-list-checks
 options:
   user_email: ""
