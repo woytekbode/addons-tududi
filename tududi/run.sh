@@ -59,6 +59,5 @@ cd /app
 
 # Start Tududi in production mode
 bashio::log.info "Starting Tududi server..."
-cd backend
 export NODE_ENV=production
-exec node server.js
+exec npm start
