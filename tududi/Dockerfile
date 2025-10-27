@@ -21,7 +21,7 @@ WORKDIR /app
 
 # Clone Tududi repository
 RUN \
-  git clone --depth 1 --branch v0.84.2 https://github.com/chrisvel/tududi.git . \
+  git clone --depth 1 https://github.com/chrisvel/tududi.git . \
   && rm -rf .git
 
 # Install dependencies (including dev dependencies needed for build)
