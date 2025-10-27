@@ -1,0 +1,30 @@
+name: Tududi
+version: "0.84.2.1"
+slug: tududi
+description: A self-hosted task management tool for organizing your life and projects
+url: https://github.com/woytekbode/addons-tududi
+arch:
+  - aarch64
+  - amd64
+init: false
+ports:
+  3002/tcp: 3002
+ports_description:
+  3002/tcp: Web interface
+ingress: true
+ingress_port: 3002
+panel_icon: mdi:format-list-checks
+options:
+  user_email: ""
+  user_password: ""
+  session_secret: ""
+  port: 3002
+  allowed_origins: ""
+  telegram_bot_token: ""
+schema:
+  user_email: email
+  user_password: password
+  session_secret: str
+  port: port
+  allowed_origins: str?
+  telegram_bot_token: str?

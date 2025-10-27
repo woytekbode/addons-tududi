@@ -1,0 +1,29 @@
+{
+  "name": "Tududi Add-on Development",
+  "image": "ghcr.io/home-assistant/devcontainer:addons",
+  "appPort": ["3002:3002", "7123:8123"],
+  "postStartCommand": "bash devcontainer_bootstrap",
+  "remoteUser": "root",
+  "containerEnv": {
+    "WORKSPACE_DIRECTORY": "${containerWorkspaceFolder}"
+  },
+  "mounts": [
+    "type=volume,target=/var/lib/docker"
+  ],
+  "privileged": true,
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "esbenp.prettier-vscode",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": false,
+        "files.trimTrailingWhitespace": true
+      }
+    }
+  }
+}
