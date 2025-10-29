@@ -1,43 +1,25 @@
+# Stage 1: Get the official Tududi image
+FROM chrisvel/tududi:v0.84.2 AS tududi-source
+
+# Stage 2: Build the Home Assistant add-on
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Install requirements for add-on
+# Install only runtime requirements (no build tools needed!)
 RUN \
   apk add --no-cache \
     nodejs \
     npm \
-    git \
-    bash \
-    python3 \
-    py3-pip \
-    make \
-    g++
+    bash
 
 # Set working directory
 WORKDIR /app
 
-# Clone Tududi repository
-RUN \
-  git clone --depth 1 https://github.com/chrisvel/tududi.git . \
-  && rm -rf .git
-
-# Install dependencies (including dev dependencies needed for build)
-ENV PYTHON=python3
-ENV NODE_ENV=development
-RUN npm ci
-
-# Ensure nanoid CJS version is installed because newer nanoid is ESM-only
-RUN npm install nanoid@3 --no-save
-
-# Build the frontend
-RUN npm run build
-
-# Set production environment and remove dev dependencies
-ENV NODE_ENV=production
-RUN npm prune --production
+# Copy the pre-built Tududi application from official image
+COPY --from=tududi-source /app /app
 
 # Create data directories
 RUN mkdir -p /data/db /data/uploads
