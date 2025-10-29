@@ -2,7 +2,7 @@
 ARG BUILD_FROM
 
 # Stage 1: Get the official Tududi image
-FROM chrisvel/tududi:v0.84.2 AS tududi-source
+FROM chrisvel/tududi:latest AS tududi-source
 
 # Stage 2: Build the Home Assistant add-on
 FROM $BUILD_FROM
